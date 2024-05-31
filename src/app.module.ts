@@ -1,7 +1,7 @@
-import { BullModule } from '@nestjs/bull';
-import { QueuesModule } from './queues/queues.module';
-import { TasksModule } from './tasks/tasks.module';
 import { Module } from '@nestjs/common';
+import { BullModule } from '@nestjs/bull';
+import { EmailsModule } from './emails/emails.module';
+import { QueuesModule } from './queues/queues.module';
 
 @Module({
   imports: [
@@ -11,10 +11,8 @@ import { Module } from '@nestjs/common';
         port: 6379,
       },
     }),
+    EmailsModule,
     QueuesModule,
-    TasksModule,
   ],
-  controllers: [],
-  providers: [],
 })
 export class AppModule {}

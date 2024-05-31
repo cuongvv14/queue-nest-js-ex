@@ -1,12 +1,12 @@
-import { InjectQueue } from '@nestjs/bull';
 import { Injectable } from '@nestjs/common';
+import { InjectQueue } from '@nestjs/bull';
 import { Queue } from 'bull';
 
 @Injectable()
 export class QueuesService {
-  constructor(@InjectQueue('tasks') private readonly taskQueue: Queue) {}
+  constructor(@InjectQueue('email') private readonly emailQueue: Queue) {}
 
-  async addTask(data: any) {
-    await this.taskQueue.add('processTask', data);
+  async addEmailToQueue(emailData: any) {
+    await this.emailQueue.add('sendEmail', emailData);
   }
 }
